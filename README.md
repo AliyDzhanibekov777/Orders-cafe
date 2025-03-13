@@ -27,7 +27,7 @@
    pip install -r requirements.txt
    
 
-# Настройка
+## Настройка
 1. Создайте файл .env и добавьте необходимые переменные окружения:
     DEBUG=True
     SECRET_KEY='your-secret-key'
@@ -41,7 +41,7 @@
 4. Теперь вы можете зайти на http://127.0.0.1:8000/.
 
 
-# Использование API
+## Использование API
 1. Получение списка заказов:
     GET 'api/v1/order/'
 
@@ -62,7 +62,7 @@
     DELETE 'v1/order/delete/<int:pk>/'
 
 
-# Тестирование
+## Тестирование
 1. python manage.py test
 
 
