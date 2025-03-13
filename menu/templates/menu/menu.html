@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<table class="table table-hover mt-3">
+    <thead>
+        <tr>
+            <th scope="col">id блюда</th>
+            <th scope="col">Название</th>
+            <th scope="col">Стоимость</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    {% for dish in menu %}
+    <tbody>
+        <tr>
+            <th scope="row">{{ dish.id }}</th>
+            <td>{{ dish.name }}</td>
+            <td>{{ dish.price }} руб.</td>
+            <td><a href="{% url 'delete_dish' dish.id %}" class="btn btn-danger btn-sm">Удалить блюдо</a></td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+<a href="{% url 'create_dish' %}" class="btn btn-primary mt-2">Добавить новое блюдо</a>
+{% endblock %}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<table class="table table-hover mt-3">
+    <thead>
+        <tr>
+            <th scope="col">id заказа</th>
+            <th scope="col">id стола</th>
+            <th scope="col">Заказ</th>
+            <th scope="col">Общая стоимость заказа</th>
+            <th scope="col">Статус</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    {% for order in orders %}
+    <tbody>
+        <tr>
+            <th scope="row">{{ order.id }}</th>
+            <td>{{ order.table_number }}</td>
+            <td>
+                {% for item in order.items.all %}
+                    <p>{{ item.name }} - {{ item.price }} руб.</p>
+                {% endfor %}
+                <a href="{% url 'change_order' order.id %}" class="btn btn-success btn-sm">Изменить заказ</a>
+            </td>
+            <td>{{ order.total_price }} руб.</td>
+            <td>{{ order.status }}</td>
+            <td><a href="{% url 'change_status' order.id %}" class="btn btn-warning btn-sm">Изменить стату заказа</a></td>
+            <td><a href="{% url 'delete_order' order.id %}" class="btn btn-danger btn-sm">Удалить заказ</a></td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+<a href="{% url 'create_order' %}" class="btn btn-primary mt-2">Добавить новый заказ</a>
+
+{% endblock %}

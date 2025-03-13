@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<table class="table table-hover mt-3">
+    <thead>
+        <tr>
+            <th scope="col">id заказа</th>
+            <th scope="col">id стола</th>
+            <th scope="col">Заказ</th>
+            <th scope="col">Общая стоимость заказа</th>
+            <th scope="col">Статус</th>
+        </tr>
+    </thead>
+    {% if orders.status.status == Оплачено %}
+    {% for order in orders %}
+    <tbody>
+        <tr>
+            <th scope="row">{{ order.id }}</th>
+            <td>{{ order.table_number }}</td>
+            <td>
+                {% for item in order.items.all %}
+                    <p>{{ item.name }} - {{ item.price }} руб.</p>
+                {% endfor %}
+            </td>
+            <td>{{ order.total_price }} руб.</td>
+            <td>{{ order.status }}</td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+<h4>Итоговая выручка за смену: {{ total_price }}</h4>
+{% endif %}
+{% endblock %}

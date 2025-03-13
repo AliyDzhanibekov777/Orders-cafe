@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<form action="{% url 'create_dish' %}" method="post" class="mt-3">
+    {% csrf_token %}
+    <div class="col-md-6 col-sm-12">
+        <label for="{{ form.table_number.id_for_lable }}" class="form-label">Название блдюда:</label>
+        {{ form.name }}
+        <br>
+        <label for="{{ form.items.id_for_lable }}" class="form-label">Цена:</label>
+        {{ form.price }}
+        <button type="submit" class="btn btn-success mt-3">Создать</button>
+    </div>
+</form>
+{% endblock %}
