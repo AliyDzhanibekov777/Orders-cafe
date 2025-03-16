@@ -12,7 +12,7 @@
 
 ## Устанорвка
 1. Клонирование репозитория:
-    git clone https://github.com/AliyDzhanibekov777/Orders-cafe.git
+    git clone https://github.com/AliyDzhanibekov777/cafe.git
 
 2. Установка виртуального окружения:
     python -m venv .venv
